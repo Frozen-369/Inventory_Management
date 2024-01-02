@@ -1,0 +1,76 @@
+*{
+    margin: 0rem;
+    padding: 0rem;
+    
+}
+
+.text_center{
+    text-align: center;
+}
+
+body{
+    height: 100%;
+    width: 100%;
+    background-attachment: fixed;
+    overflow:visible;
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+    background-size: cover;
+    background-position: center;
+
+}
+
+
+.container{
+    width: 25rem;
+    margin-top: 6rem;
+    background: whitesmoke;
+    
+}
+
+.login_container{
+    margin: 1.5rem;
+    display: grid;
+}
+
+.btn{
+    border: none;
+    background: linear-gradient(90deg, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+}
+
+.btn:hover{
+    
+    background: darkmagenta;
+    cursor: pointer;
+    transition: background-color 0.5s ease-out;
+}
+
+.text_box{
+    padding: 1rem 0 0 0.5rem;
+    border: none;
+    outline: none;
+    font-size: medium;
+    background: whitesmoke;
+}
+
+.logo{
+    margin: 1rem 0 0 1rem;
+    text-align: center;
+    color: gray;
+}
+
+.fa-brands{
+    padding: 0 1rem 0 1rem;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+
+
+.age select{
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: gray;
+    cursor: pointer;
+  }
+  
