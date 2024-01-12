@@ -14,16 +14,30 @@
 </head>
 
 <body>
-    <form action="register.php" method="post">
+    <form action="register.php" method="post" id="employeeLogin">
+        <h2 class="fw-bolder text_center mt-3 ">LOGIN</h2>
         <div class="container border border-2 rounded color_white pb-4">
-            <h2 class="fw-bolder text_center mt-4">LOGIN</h2>
+            <div class="login">
 
+                <div class="admin log" id="admin-border">
+                    <i class="fa-solid fa-user"></i>
+                    <a href="adminLogin.html" class="remove">
+                        <h4>Admin</h4>
+                    </a>
+                </div>
+
+
+                <div class="employee log login-border">
+                    <i class="fa-solid fa-users"></i>
+                    <h4>Employee</h4>
+                </div>
+            </div>
             <div class="login_container mt-5">
                 <div class="Username">
                     <label>Username</label>
                     <div class="input-container">
                         <i class="icon fas fa-user"></i>
-                        <input type="text" class="text_box" placeholder="Username">
+                        <input type="text" class="text_box" placeholder="Username" name="username">
                         <hr>
                     </div>
                 </div>
@@ -32,7 +46,7 @@
                     <label>Password</label>
                     <div class="input-container">
                         <i class="icon fas fa-lock"></i>
-                        <input type="password" class="text_box" placeholder="Password">
+                        <input type="password" class="text_box" placeholder="Password" name="password">
                         <hr>
                     </div>
                 </div>
@@ -42,11 +56,14 @@
                     Remember Me
                 </label>
             </div>
-
+            <div class="error" id="error_employeeLogin"></div>
             <div class="login_container mt-3">
-
-                <button type="button" class="btn btn-dark rounded-5 mb-4">Login</button>
-                <button type="button" class="btn btn-dark rounded-5">Register</button>
+                <button type="submit" class="btn btn-dark rounded-5 mb-4">Login</button>
+                
+                    <button type="button" class="btn btn-dark rounded-5">
+                        <a href="register.html" class="remove">Register</a>
+                    </button>
+                
             </div>
             <div class="logo">
                 <p>Sign in Using</p>
@@ -57,6 +74,7 @@
 
         </div>
     </form>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         crossorigin="anonymous"></script>
