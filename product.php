@@ -1,6 +1,6 @@
 <?php
 
-include("../connection.php");
+include("connection.php");
 
 // Fetch products from the database
 $sql = "SELECT * FROM products";

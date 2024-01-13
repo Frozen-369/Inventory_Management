@@ -24,10 +24,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response['message'] = 'Please fill out Product supplier field.';
     } else {
 
-    include("../connection.php");
+    include("connection.php");
     if(!empty($_FILES["editProductImage"]["name"])){
         // File Upload Handling
-        $targetDir = "../Image/";
+        $targetDir = "Image/";
         $p_image = basename($_FILES["editProductImage"]["name"]);
         $targetFilePath = $targetDir . $p_image;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);

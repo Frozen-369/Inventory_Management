@@ -1,5 +1,4 @@
 <?php
-
 $response = array('status' => 'error');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -25,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $response['message'] = 'Please fill out Product supplier field.';
     } else {
         // File Upload Handling
-        $targetDir = "../Image/";
+        $targetDir = "Image/";
         $p_image = basename($_FILES["productImage"]["name"]);
         $targetFilePath = $targetDir . $p_image;
         $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
@@ -47,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             VALUES ('$p_name', '$targetFilePath', '$p_category', '$p_price', '$p_quantity', '$p_supplier')";
 
                         // Connection to db
-                        include("../connection.php");
+                        include("connection.php");
 
                         // Execute the query
                         $qry = mysqli_query($conn, $sql);

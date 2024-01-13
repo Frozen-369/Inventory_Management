@@ -1,6 +1,6 @@
 <?php
 if (isset($_GET['id']) && isset($_GET['action'])) {
-    include("../connection.php");
+    include("connection.php");
     $id = $_GET['id'];
     $action = $_GET['action'];
     switch ($action) {

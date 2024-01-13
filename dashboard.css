@@ -1,36 +1,36 @@
 @import url("https://fonts.googleapis.com/css?family=Poppins");
 
-*{
+* {
     margin: 0;
     padding: 0;
 }
 
 
-.custom-navbar{
-    
+.custom-navbar {
+
     font-family: 'Poppins';
     font-size: 1rem;
 }
 
-.custom-nav-links{
+.custom-nav-links {
     margin-left: auto;
 }
 
-.nav-item{
+.nav-item {
     margin-left: 3rem;
 }
 
 .navbar-nav .nav-item.active .nav-link,
 .navbar-nav .nav-link:hover {
-    color: white; 
+    color: white;
     font-weight: bold;
 }
 
-.logo{
+.logo {
     margin-left: 0rem;
 }
 
-.add_search_Conatainer{
+.add_search_Conatainer {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,14 +38,20 @@
     padding: 0;
 }
 
+.searchContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-.searchBtn{
+
+.searchBtn {
     margin-left: auto;
     display: flex;
 }
 
 
-.check{
+.check {
     display: flex;
     margin-left: auto;
     align-items: center;
@@ -54,7 +60,7 @@
 
 
 
-.check label{
+.check label {
     padding-right: 0.5rem;
     padding-left: 0.8rem;
 }
@@ -67,7 +73,7 @@
 }
 
 
-#successModalLabel{
+#successModalLabel {
     margin-left: 12rem;
     font-weight: bolder;
 }
@@ -79,51 +85,51 @@
 }
 
 
-#successModalLabel{
+#successModalLabel {
     color: green;
 }
 
-.icon{
+.icon {
     font-size: 5rem;
     text-align: center;
 }
 
-#successModalBody div{
+#successModalBody div {
     text-align: center;
     font-size: 1.5rem;
 }
 
-.error{
+.error {
     display: none;
     padding: 0.5rem
 }
 
-#productContainer{
+#productContainer {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
-.product{
+.product {
     width: calc(33.33% - 1.25rem);
     margin: 0.5rem -1rem 1.5rem 0;
     padding: 1rem 0 1rem 0;
 }
 
-.productInfo{
+.productInfo {
     text-align: center;
     align-items: center;
     justify-content: center;
 }
 
 
-.edit_section{
+.edit_section {
     display: flex;
     margin: 1rem;
     justify-content: space-between;
 }
 
-.add_search_Conatainer{
+.add_search_Conatainer {
     margin: 0rem;
 }
 
@@ -133,15 +139,15 @@
     color: white;
 }
 
-.custom-btn:hover{
+.custom-btn:hover {
     color: black;
 }
 
-.editBtn:hover{
+.editBtn:hover {
     background-color: #209899;
 }
 
-#productContainer .custom-danger{
+#productContainer .custom-danger {
     text-align: center;
 }
 
@@ -149,51 +155,106 @@
 
 
 /* ------------------Media Query------------------ */
+@media (max-width: 1400px) {
+    .product .productInfo img {
+        height: 150px;
+    }
+}
+
 @media (max-width: 992px) {
 
-    .custom-navbar{
+    .custom-navbar {
         font-size: 2rem;
     }
-    .custom-nav-links{
+
+    .custom-nav-links {
         text-align: center;
     }
-    
-    .nav-item{
+
+    .nav-item {
         margin-left: 0rem;
     }
 
-    .logo{
+    .logo {
         margin: 0rem;
     }
+
     .product {
         width: calc(50% - 1.25rem);
     }
-    .addBtn{
+
+    .addBtn {
         display: flex;
         margin-bottom: 0.5rem;
     }
 
-    .add_search_Conatainer{
+    .add_search_Conatainer {
         display: inline-block;
     }
 
+    #inventory #inventoryModalLabel,
+    #edit_form #editProductModalLabel {
+        margin-left: 9rem;
+    }
+
+    #category, #price{
+        font-size: 10px;
+    }
+
+
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .product {
         width: calc(100% - 1.25rem);
-        margin-right: 0; /* Reset margin-right for full width */
+        margin-right: 0;
     }
 
-    .add_search_Conatainer{
+    .add_search_Conatainer {
         display: grid;
+        margin-left: 0;
     }
-    
-    .addBtn{
+
+    .addBtn {
         display: flex;
         margin-bottom: 0.5rem;
     }
-    
-    
-    
+
+    #inventory #inventoryModalLabel,
+    #edit_form #editProductModalLabel {
+        margin-left: 10rem;
+    }
+    .searchContainer{
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+
+    .check{
+        padding-bottom: 1rem;
+    }
+
+    .check #price,#category{
+        font-size: 15px;
+        margin-right: 1rem;
+    }
+
+    .searchBtn{
+        /* margin-left: -7rem; */
+        margin-right: auto;
+    }
+  
+}
+
+@media (max-width: 480px){
+    .check{
+        flex-wrap: wrap;
+    }
+
+    .check #price,#category{
+        margin-bottom: 1rem;
+    }
+
+    .searchBtn{
+        margin-right: 4rem;
+    }
 }

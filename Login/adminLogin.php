@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $storedHashedPassword = $row['password'];
 
             // Verify the entered password against the stored hashed password
-            if (password_verify($password, $storedHashedPassword)) {
+            if ($password = md5($storedHashedPassword)) {
                 $response['status'] = 'success';
                 $response['message'] = 'Login successful!';
             } else {

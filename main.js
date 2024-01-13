@@ -1,5 +1,5 @@
 function handleFormSubmission(formId, url, ContainerID, path, modalID) {
-    $(formId).on('submit', function(event) {
+    $(formId).on('submit', function (event) {
         // Clear any previous error messages
         event.preventDefault();
         $('#' + ContainerID).empty();
@@ -13,7 +13,7 @@ function handleFormSubmission(formId, url, ContainerID, path, modalID) {
             dataType: 'json',
             contentType: false,
             processData: false,
-            success: function(response) {
+            success: function (response) {
                 if (response.status === 'success') {
                     // No errors, proceed to fetch data from the database
 
@@ -28,7 +28,7 @@ function handleFormSubmission(formId, url, ContainerID, path, modalID) {
                     displayErrorMessage(response.message, ContainerID);
                 }
             },
-            error: function() {
+            error: function () {
                 console.log('Error fetching product data');
             }
         });
@@ -60,24 +60,24 @@ function displaySuccessMessage(message) {
 
 
 $(document).ready(function () {
-        // Fetch data from PHP file using AJAX
-        $.ajax({
-            type: 'GET',
-            url: 'product.php',
-            dataType: 'json',
-            success: function (response) {
-                // Check if the response status is success
-                if (response.status === 'success') {
-                    // Clear existing content in the productContainer
-                    $('#productContainer').empty();
+    // Fetch data from PHP file using AJAX
+    $.ajax({
+        type: 'GET',
+        url: 'product.php',
+        dataType: 'json',
+        success: function (response) {
+            // Check if the response status is success
+            if (response.status === 'success') {
+                // Clear existing content in the productContainer
+                $('#productContainer').empty();
 
-                    // Loop through the products and append to the productContainer
-                    response.products.forEach(function (product) {
-                        var id = Number(product.id);
-                        var productHtml = `
+                // Loop through the products and append to the productContainer
+                response.products.forEach(function (product) {
+                    var id = Number(product.id);
+                    var productHtml = `
                         <div class="card product">
                         <div class="productInfo">
-                        <img src = "${product.product_image}" class="img-thumbnail" height="100px" width="200px"> 
+                        <img src = "${product.product_image}" class = "img-thumbnail"> 
                         <h3>${product.product_name}</h3>
                         <p>Category: ${product.product_category}</p>
                         <p>Price: $${product.product_price}</p>
@@ -95,19 +95,19 @@ $(document).ready(function () {
                         </div>
                     </div>`;
 
-                        // Append the productHtml to the productContainer
-                        $('#productContainer').append(productHtml);
-                    });
-                } else {
-                    // Display an error message if the response status is not success
-                    console.error('Error fetching products:', response.message);
-                }
-            },
-            error: function (error) {
-                console.error('AJAX Error:', error);
+                    // Append the productHtml to the productContainer
+                    $('#productContainer').append(productHtml);
+                });
+            } else {
+                // Display an error message if the response status is not success
+                console.error('Error fetching products:', response.message);
             }
-        });
+        },
+        error: function (error) {
+            console.error('AJAX Error:', error);
+        }
     });
+});
 
 
 
@@ -202,10 +202,9 @@ function editProduct(id) {
             if (response.status === 'success') {
 
                 var product = response.products[0];
-
                 // Populate the modal fields with retrieved data
                 $('#editProductName').val(product.product_name);
-                $('#imageContainer').append(`<img src = "${product.product_image}" class = "img-thumbnail">`);
+                $('#imageContainer').html(`<img src = "${product.product_image}" class = "img-thumbnail">`);
                 $('#editProductCategory').val(product.product_category);
                 $('#editProductPrice').val(product.product_price);
                 $('#editQuantityInStock').val(product.quantity_in_stock);
@@ -270,7 +269,7 @@ function displaySearchResults(response) {
         var productHtml = `
         <div class="card product">
         <div class="productInfo">
-        <img src = "${product.product_image}" class="img-thumbnail" height="100px" width="200px"> 
+        <img src = "${product.product_image}" class = "img-thumbnail"> 
         <h3>${product.product_name}</h3>
         <p>Category: ${product.product_category}</p>
         <p>Price: $${product.product_price}</p>
@@ -302,14 +301,18 @@ document.getElementById('search_btn').addEventListener('click', function (event)
     $(document).ready(function () {
         // Get the search term from the input field
         var searchTerm = (document.getElementById('search_term')).value;
-        // var sortPrice = (document.getElementById('search_term')).value;
-        // var sortCategory = (document.getElementById('search_term')).value;
+        var price = $('#price').val();
+        var category = $('#category').val();
 
         // Fetch data from PHP file using AJAX
         $.ajax({
             type: 'POST',
             url: 'search.php',
-            data: { search: searchTerm},
+            data: {
+                search: searchTerm,
+                price: price,
+                category: category
+            },
             dataType: 'json',
             success: function (response) {
                 // Check if the response status is success

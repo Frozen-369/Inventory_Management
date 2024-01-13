@@ -35,8 +35,8 @@ function handleFormSubmission(formId, url, ContainerID, path) {
 }
 
 handleFormSubmission('#registrationForm', 'register.php', 'error_container', 'adminLogin.html');
-handleFormSubmission('#employeeLogin', 'employeeLogin.php', 'error_employeeLogin', '../DashBoard/dashboard.html');
-handleFormSubmission('#adminLogin', 'adminLogin.php', 'error_adminLogin', '../DashBoard/dashboard.html');
+handleFormSubmission('#employeeLogin', 'employeeLogin.php', 'error_employeeLogin', '../dashboard.html');
+handleFormSubmission('#adminLogin', 'adminLogin.php', 'error_adminLogin', '../dashboard.html');
 
 function displayErrorMessage(message, containerID) {
     var errorContainer = document.getElementById(containerID);

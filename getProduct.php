@@ -1,7 +1,7 @@
 <?php
 if (isset($_GET['id'])) {
     // Include the connection file
-    include("../connection.php");
+    include("connection.php");
 
     // Sanitize the input to prevent SQL injection
     $id = mysqli_real_escape_string($conn, $_GET['id']);
