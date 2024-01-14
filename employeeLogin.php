@@ -1,7 +1,8 @@
 <?php
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    include("../connection.php");
+    include("connection.php");
     $username = trim($_POST["username"]);
     $password = trim($_POST["password"]);
 
@@ -11,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else if (empty($password)) {
         $response['message'] = 'Empty Password Field';
     } else {
-        $check = "SELECT username, password FROM admin WHERE username = '$username'";
+        $check = "SELECT username, password FROM register WHERE username = '$username'";
         $Result = mysqli_query($conn, $check);
 
 
@@ -20,7 +21,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $storedHashedPassword = $row['password'];
 
             // Verify the entered password against the stored hashed password
-            if ($password = md5($storedHashedPassword)) {
+            if (password_verify($password, $storedHashedPassword)) {
+                $_SESSION['username'] = $username;
+                $_SESSION['role'] = 'employee';
                 $response['status'] = 'success';
                 $response['message'] = 'Login successful!';
             } else {

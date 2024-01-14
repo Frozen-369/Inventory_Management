@@ -67,7 +67,12 @@ function displaySearchResults(response) {
 }
 
 
-
+function displayErrorMessage(message, containerID) {
+    var errorContainer = document.getElementById(containerID);
+    errorContainer.innerHTML = `<div class="alert alert-danger custom-danger" role="alert">${message}</div>`;
+    // Show the error container
+    errorContainer.style.display = 'block';
+}
 
 
 document.getElementById('search_btn').addEventListener('click', function (event) {
@@ -100,6 +105,83 @@ document.getElementById('search_btn').addEventListener('click', function (event)
             },
             error: function (error) {
                 console.error('AJAX Error:', error);
+            }
+        });
+    });
+});
+
+
+$(document).ready(function () {
+    $.ajax({
+        url: 'session.php',
+        type: 'GET',
+        dataType: 'json',
+        success: function (response) {
+            if (response.status === 'success') {
+                // User is logged in
+                $('.user').empty();
+                $('.user').text(response.username);
+            } else {
+                // User is not logged in, redirect to login page
+                window.location.href = 'adminLogin.html';
+            }
+        },
+        error: function () {
+            window.location.href = 'adminLogin.html';
+        }
+    });
+});
+
+$(document).ready(function () {
+    $('.logoutBtn').on('click', function () {
+        // Make an AJAX request to the logout PHP script
+        $.ajax({
+            url: 'logout.php',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    // Redirect to the login page
+                    window.location.href = 'adminLogin.html';
+                } else {
+                    // Handle any errors (optional)
+                    console.error('Logout failed: ' + response.message);
+                }
+            },
+            error: function () {
+                console.error('Error during logout AJAX request.');
+            }
+        });
+    });
+});
+
+
+$(document).ready(function () {
+    $('.roleBasedRedirect').on('click', function (event) {
+        event.preventDefault();
+
+        // Make an AJAX request to the PHP script that checks the role
+        $.ajax({
+            url: 'checkRole.php',
+            type: 'POST',
+            dataType: 'json',
+            success: function (response) {
+                if (response.status === 'success') {
+                    // Redirect based on the user's role
+                    if (response.role === 'admin') {
+                        window.location.href = 'inventory.html';
+                    } else if (response.role === 'employee') {
+                        window.location.href = 'inventoryUser.html';
+                    } else {
+                        console.error('Unknown role: ' + response.role);
+                    }
+                } else {
+                    // Handle any errors (optional)
+                    console.error('Role check failed: ' + response.message);
+                }
+            },
+            error: function () {
+                console.error('Error during role check AJAX request.');
             }
         });
     });

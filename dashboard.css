@@ -73,7 +73,7 @@
 }
 
 
-#successModalLabel {
+#successModalLabel, #failureModalLabel{
     margin-left: 12rem;
     font-weight: bolder;
 }
@@ -87,6 +87,17 @@
 
 #successModalLabel {
     color: green;
+}
+
+#failureModalLabel {
+    color: red;
+}
+
+#failureModalBody{
+    font-size: 1rem;
+    margin-left: 6.5rem;
+    font-weight: bold;
+    font-family: 'Poppins';
 }
 
 .icon {
@@ -151,6 +162,25 @@
     text-align: center;
 }
 
+.login_register{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.login, .logout{
+    display: flex;
+    align-items: center;   
+    color: white;
+    margin-right: 1rem;
+}
+
+.login p{
+    align-items: center;
+    padding-top: 1rem;
+    padding-left: 0.5rem;
+    
+}
 
 
 
@@ -239,7 +269,6 @@
     }
 
     .searchBtn{
-        /* margin-left: -7rem; */
         margin-right: auto;
     }
   

@@ -135,3 +135,18 @@ body{
     padding: 0.5rem
 }
 
+@media (max-width: 400px) {
+    .login{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+   .log{
+    width: 5 0rem;
+   }
+
+    .text_box {
+        font-size: 14px;
+    }
+
+}
